@@ -94,6 +94,13 @@ test_set1 = test_datagen.flow_from_directory('test1',
     Found 19998 images belonging to 2 classes.
     Found 5000 images belonging to 2 classes.
     Found 12500 images belonging to 1 classes.
+    
+
+#finetune you network parameter in last by using low learning rate like 0.00001
+#classifier.save('resources/dogcat_model_bak.h5')
+#from tensorflow.keras.models import load_model
+#model = load_model('partial_trained1')
+#100 iteration with learning rate 0.001 and after that 0.0001
 
 
 
