@@ -1,8 +1,6 @@
 
 # Dog vs Cat Convolution Neural Network Classifier
 
-### Problem statement :
-
 In this Section I'll be implementing Convolution Neural Network(CNN) Classifier for Classifying dog and cat images. The Total number of images I used for training is 25,000 and final testing is done on seperate 10,000 images.
 
 ### Dependencies
@@ -19,7 +17,7 @@ In this Section I'll be implementing Convolution Neural Network(CNN) Classifier 
 Image training set contain 12500 images for each category. I split those into 80% train and 20% means test Split each class images into 10,000 for train and 2,500 for test. 
 
 ### Architecture
-![image](resources/images/architecture.jpg)
+![image](images/architecture.jpg)
 
 
 ```python
