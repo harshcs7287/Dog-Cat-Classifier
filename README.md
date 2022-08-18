@@ -4,11 +4,11 @@
 
 ### Problem statement :
 
-In this Section we are implementing Convolution Neural Network(CNN) Classifier for Classifying dog and cat images. The Total number of images available for training is 25,000 and final testing is done on seperate 10,000 images.
+In this Section I'll be implementing Convolution Neural Network(CNN) Classifier for Classifying dog and cat images. The Total number of images available for training is 25,000 and final testing is done on seperate 10,000 images.
 #### Note:This problem statement and dataset is taken from [this](https://www.kaggle.com/c/dogs-vs-cats) Kaggle competition.
 
 ### Dependencies
-* Jupyter notebook
+* \Google Colab
 * Tensorflow 1.10
 * Python 3.6
 * Matplotlib
@@ -16,8 +16,6 @@ In this Section we are implementing Convolution Neural Network(CNN) Classifier f
 * Scikit-Learn
 * Pandas
 * Numpy
-
-Install dependencies using [conda](https://conda.io/docs/)
 
 #### Test Train Split
 Image training set contain 12500 images for each category. I split those into 80% train and 20% means test Split each class images into 10,000 for train and 2,500 for test. 
@@ -51,7 +49,7 @@ Network Parameter:
 ```python
 classifier = Sequential()
 classifier.add(Conv2D(32,(3,3),input_shape=(64,64,3),activation = 'relu'))
-classifier.add(MaxPooling2D(pool_size=(2,2),strides=2)) #if stride not given it equal to pool filter size
+classifier.add(MaxPooling2D(pool_size=(2,2),strides=2))
 classifier.add(Conv2D(32,(3,3),activation = 'relu'))
 classifier.add(MaxPooling2D(pool_size=(2,2),strides=2))
 classifier.add(Flatten())
@@ -88,7 +86,7 @@ test_set = test_datagen.flow_from_directory('test',
                                            batch_size = 32,
                                            class_mode='binary',
                                            shuffle=False)
-#Test Set /no output available
+#Test Set
 test_set1 = test_datagen.flow_from_directory('test1',
                                             target_size=(64,64),
                                             batch_size=32,
@@ -113,13 +111,7 @@ classifier.fit_generator(train_set,
                         #callbacks=[tensorboard]
                         );
 
-#Some Helpful Instructions:
-
-#finetune you network parameter in last by using low learning rate like 0.00001
-#classifier.save('resources/dogcat_model_bak.h5')
-#from tensorflow.keras.models import load_model
-#model = load_model('partial_trained1')
-#100 iteration with learning rate 0.001 and after that 0.0001
+iteration with learning rate 0.001 and after that 0.0001
 ```
 
 
@@ -133,7 +125,6 @@ classifier = load_model('resources/dogcat_model_bak.h5')
 
 ```python
 #Prediction of image
-%matplotlib inline
 import tensorflow
 from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
@@ -141,7 +132,6 @@ import numpy as np
 img1 = image.load_img('test/Cat/10.jpg', target_size=(64, 64))
 img = image.img_to_array(img1)
 img = img/255
-# create a batch of size 1 [N,H,W,C]
 img = np.expand_dims(img, axis=0)
 prediction = classifier.predict(img, batch_size=None,steps=1) #gives all class prob.
 if(prediction[:,:]>0.5):
