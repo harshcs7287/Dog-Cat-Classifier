@@ -1,17 +1,17 @@
 
 # Dog vs Cat Convolution Neural Network Classifier
 
-In this Section I'll be implementing Convolution Neural Network(CNN) Classifier for Classifying dog and cat images. The Total number of images I used for training is 25,000 and final testing is done on seperate 10,000 images.
+In this project I'll be implementing Convolution Neural Network(CNN) Classifier for Classifying dog and cat images. The Total number of images I used for training is 25,000 and final testing is done on seperate 10,000 images.
 
 ### Dependencies
 * Google Colab
-* Tensorflow 1.10
 * Python 3.6
+* Tensorflow 1.10 
+* Pandas
+* Numpy
 * Matplotlib
 * Seaborn
 * Scikit-Learn
-* Pandas
-* Numpy
 
 #### Test Train Split
 Image training set contain 12500 images for each category. I split those into 80% train and 20% means test Split each class images into 10,000 for train and 2,500 for test. 
@@ -113,7 +113,7 @@ iteration with learning rate 0.001 and after that 0.0001
 
 ```python
 from tensorflow.keras.models import load_model
-classifier = load_model('resources/dogcat_model_bak.h5')
+classifier = load_model('dogcat_model_bak.h5')
 ```
 
 ### Prediction of Single Image
@@ -129,7 +129,7 @@ img1 = image.load_img('test/Cat/10.jpg', target_size=(64, 64))
 img = image.img_to_array(img1)
 img = img/255
 img = np.expand_dims(img, axis=0)
-prediction = classifier.predict(img, batch_size=None,steps=1) #gives all class prob.
+prediction = classifier.predict(img, batch_size=None,steps=1) 
 if(prediction[:,:]>0.5):
     value ='Dog :%1.2f'%(prediction[0,0])
     plt.text(20, 62,value,color='red',fontsize=18,bbox=dict(facecolor='white',alpha=0.8))
@@ -143,7 +143,7 @@ plt.show()
 ```
 
 
-![png](resources/images/output_10_0.png)
+![png](images/output_10_0.png)
 
 
 
@@ -278,7 +278,7 @@ plt.ylabel('true value');
 ```
 
 
-![png](resources/images/output_14_0.png)
+![png](images/output_14_0.png)
 
 
 
@@ -301,7 +301,7 @@ plt.show()
 ```
 
 
-![png](resources/images/output_15_0.png)
+![png](images/output_15_0.png)
 
 
 
@@ -323,7 +323,7 @@ plt.show()
 ```
 
 
-![png](resources/images/output_16_0.png)
+![png](images/output_16_0.png)
 
 
 
@@ -371,7 +371,7 @@ img = np.expand_dims(img, axis=0)
 ```
 
 
-![png](resources/images/output_19_0.png)
+![png](images/output_19_0.png)
 
 
 
@@ -417,7 +417,7 @@ plt.imshow(conv2d_6_features[0, :, :, 4], cmap='gray')
 
 
 
-![png](resources/images/output_24_1.png)
+![png](images/output_24_1.png)
 
 
 ### First Covolution Layer Output
@@ -439,7 +439,7 @@ plt.show()
 ```
 
 
-![png](resources/images/output_26_0.png)
+![png](images/output_26_0.png)
 
 
 ### Second Covolution Layer Output
@@ -459,7 +459,7 @@ plt.show()
 ```
 
 
-![png](resources/images/output_28_0.png)
+![png](images/output_28_0.png)
 
 
 ### Model Performance on Unseen Data
@@ -490,7 +490,7 @@ for i in range(columns*rows):
 ```
 
 
-![png](resources/images/output_30_0.png)
+![png](images/output_30_0.png)
 
 
 
@@ -512,4 +512,4 @@ print('Validation Accuracy: %1.2f%%     Validation loss: %1.6f'%(x2[1]*100,x2[0]
 
 
 ### Conclusion
-The Architecture and parameter used in this network are capable of producing accuracy of **97.56%** on Validation Data which is pretty good. It is possible to Achieve more accuracy on this dataset using deeper network and fine tuning of network parameters for training. You can download this trained model from resource directory and Play with it. 
+The Architecture and parameter used in this network are capable of producing accuracy of **97.56%** on Validation Data.
