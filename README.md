@@ -4,7 +4,7 @@
 In this project I'll be implementing Convolution Neural Network(CNN) Classifier for Classifying dog and cat images. The Total number of images I used for training is 25,000 and final testing is done on seperate 10,000 images.
 
 ### Dependencies
-* Google Colab
+* Jupyter Notebook
 * Python 3.6
 * Tensorflow 1.10 
 * Pandas
